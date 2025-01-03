@@ -59,13 +59,13 @@ flask run
 
 Visit the application at:
 
-```
+```bash
 http://127.0.0.1:5000/
 ```
 
 ## Folder Structure
 
-```
+```bash
 todo-app/
 ├── app.py           # Main application file
 ├── static/          # Static files (CSS, JS, images)
@@ -86,4 +86,8 @@ Contributions are welcome! If you find a bug or have a feature request, please o
 ## License
 
 This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+## Auther
+
+Aman Dubey
 
