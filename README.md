@@ -18,11 +18,11 @@ A simple web-based Todo application built using Python (Flask) and SQLite.
 
 ### Home Page
 
-![Home Page](static/screenshots/home.png)
+![Home Page](static/Todo-home.png)
 
 ### Update Task Modal
 
-![Update Task](static/screenshots/update.png)
+![Update Task](static/Todo-update.png)
 
 ## Installation and Setup
 
