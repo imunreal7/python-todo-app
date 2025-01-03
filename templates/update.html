@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Todo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #007bff;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 0.5rem;
+        }
+
+        .form-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Update Todo</h1>
+        <form method="POST" action="{{ url_for('update_todo', id=todo.id) }}">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" value="{{ todo.title }}" required />
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4" required>{{ todo.description }}</textarea>
+
+            <label for="due_date">Due Date:</label>
+            <input type="date" id="due_date" name="due_date" value="{{ todo.due_date }}" />
+
+            <label for="priority">Priority:</label>
+            <select id="priority" name="priority">
+                <option value="low" {% if todo.priority == 'low' %}selected{% endif %}>Low</option>
+                <option value="medium" {% if todo.priority == 'medium' %}selected{% endif %}>Medium</option>
+                <option value="high" {% if todo.priority == 'high' %}selected{% endif %}>High</option>
+            </select>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="is_completed" name="is_completed" {% if todo.is_completed %}checked{% endif %} />
+                <label for="is_completed">Completed</label>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit">Update</button>
+                <a href="{{ url_for('index') }}">Cancel</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
